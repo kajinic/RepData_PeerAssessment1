@@ -3,6 +3,7 @@ title: "Reproducible Research: Project 1"
 author: "Alojz Kajinic"
 date: "July 23, 2017"
 output: html_document
+          keep_md: true
 ---
 
 # Introduction  
@@ -15,7 +16,7 @@ The dataset can be downloaded from the following website:
 
 https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip  
 
-It is stored in a comma-separated_value (CSV) file.  
+It is stored in a comma-separated value (CSV) file.  
 
 There are 17568 observations of 3 variables:
 
@@ -37,7 +38,6 @@ total.steps <- tapply(data$steps, data$date,
                       FUN = sum, na.rm =TRUE, simplify = TRUE)
 
 total.steps <- total.steps[!is.na(total.steps)]
-
 
 g1 <- qplot(total.steps, binwidth = 1000, xlab = "Daily Total Steps",
             main = "Distribution of daily total steps (missing data ignored)")
@@ -67,6 +67,7 @@ The median number of steps taken each day is `r median.total.steps`.
 library(ggplot2)
 averages <- aggregate(x=list(steps=data$steps), by=list(interval=data$interval),
                       FUN=mean, na.rm=TRUE)
+                      
 g2 <- ggplot(data=averages, aes(x=interval, y=steps)) +
       geom_line() +
       xlab("5-minute interval") +
@@ -156,7 +157,7 @@ wx <- sapply(data.impute$date, is.weekday)
 data.impute$wk <- as.factor(wx)
 ```
 
-Now we are ready to create a panel plot showing a time series (type = “l”) plot using the 5-minute intervals as the x-axis and the average number of steps taken (averaged across all weekday days or weekend days) as the y-axis.
+Now we are ready to create a panel plot showing a time series plot using the 5-minute intervals as the x-axis and the average number of steps taken (averaged across all weekday days or weekend days) as the y-axis.
 
 ```{r}
 wk.data <- aggregate(steps ~ wk+interval, data=data.impute, FUN=mean)
