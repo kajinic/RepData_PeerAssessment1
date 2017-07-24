@@ -82,7 +82,7 @@ The median number of steps taken each day is 10,395.
 
     plot(g2)
 
-![](figure_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](figure/PA1_template_plot2.png)
 
     ggsave("PA1_template_plot2.png")
 
@@ -140,7 +140,7 @@ that interval.
 
     plot(g3)
 
-![](figure_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](figure/PA1_template_plot3.png)
 
     ggsave("PA1_template_plot3.png")
 
@@ -207,5 +207,5 @@ taken (averaged across all weekday days or weekend days) as the y-axis.
            lty = 1,
            data = wk.data)
 
-![](figure_files/figure-markdown_strict/unnamed-chunk-13-1.png)
+![](figure/PA1_template_plot4.png)
 
