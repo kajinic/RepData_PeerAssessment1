@@ -1,10 +1,3 @@
----
-title: "Reproducible Research: Project 1"
-author: "Alojz Kajinic"
-date: "July 23, 2017"
-output: md_document
----
-
 Introduction
 ============
 
