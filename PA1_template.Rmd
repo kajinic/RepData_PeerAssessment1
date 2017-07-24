@@ -26,7 +26,10 @@ interval : Identifier for the 5-minute interval in which measurement was taken
 ### 1. Code for reading in the dataset.  
 
 ```{r echo = TRUE}
-data <- read.csv("C:/Users/Owner/Documents/Coursera/repdata_project1/activity.csv")
+data <- read.csv("C:/Open/Coursera/RepData_PeerAssessment1/activity.csv")
+
+data$date <- as.Date(data$date)
+head(data)
 ```
 
 ### 2. Histogram of the total number of steps taken each day (missing data ignored).  
@@ -41,7 +44,8 @@ total.steps <- total.steps[!is.na(total.steps)]
 g1 <- qplot(total.steps, binwidth = 1000, xlab = "Daily Total Steps",
             main = "Distribution of daily total steps (missing data ignored)")
 
-plot(g1)  
+plot(g1)
+ggsave("PA1_template_plot1.png")
 
 ```
 
@@ -73,6 +77,7 @@ g2 <- ggplot(data=averages, aes(x=interval, y=steps)) +
       ylab("average steps per interval across all days")
 
 plot(g2)
+ggsave("PA1_template_plot2.png")
 
 ```
 
@@ -106,6 +111,8 @@ data.ign <- subset(data, !is.na(data$steps))
 ndx <- is.na(data.impute$steps)
 int.avg <- tapply(data.ign$steps, data.ign$interval, mean, na.rm = TRUE)
 data.impute$steps[ndx] <- int.avg[as.character(data.impute$interval[ndx])]
+
+head(data.impute)
 ```
 
 ### 7. Histogram of the total number of steps taken each day after missing values are imputed.  
@@ -119,7 +126,8 @@ new.dailysum <- tapply(data.impute$steps, data.impute$date, sum,
 g3 <- qplot(new.dailysum, binwidth = 1000, xlab = "Daily Total Steps",
             main = "Distribution of daily total steps (missing data imputed)")
 
-plot(g3)  
+plot(g3)
+ggsave("PA1_template_plot3.png")
 
 ```
 
@@ -152,8 +160,11 @@ is.weekday <- function(d) {
 
 data.impute$date <- as.Date(data.impute$date, format = "%m/%d/%Y")
 
+head(data.impute)
+
 wx <- sapply(data.impute$date, is.weekday)
 data.impute$wk <- as.factor(wx)
+
 ```
 
 Now we are ready to create a panel plot showing a time series plot using the 5-minute intervals as the x-axis and the average number of steps taken (averaged across all weekday days or weekend days) as the y-axis.
@@ -170,4 +181,6 @@ xyplot(steps ~ interval | factor(wk),
        type = "l",
        lty = 1,
        data = wk.data)
+
 ```
+
