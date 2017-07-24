@@ -52,14 +52,14 @@ plot(g1)
 mean.total.steps <- mean(total.steps, na.rm=TRUE)  
 ```
 
-The mean number of steps taken each day is `r mean.total.steps`.  
+The mean number of steps taken each day is 9,354.  
 
 
 ```{r echo = TRUE}
 median.total.steps <- median(total.steps, na.rm=TRUE)  
 ```
 
-The median number of steps taken each day is `r median.total.steps`.  
+The median number of steps taken each day is 10,395.  
 
 ### 4. Time series plot of the average number of steps taken.    
 
@@ -83,9 +83,9 @@ plot(g2)
 max.steps <- averages[which.max(averages$steps),]
 ```
 
-The interval `r max.steps$interval` contains, on average, the maximum number of steps.  
+The interval 835 contains, on average, the maximum number of steps.  
 
-The number of steps in `r max.steps$interval` interval is `r max.steps$steps`.  
+The number of steps in interval 835 is 206.  
 
 ### 6. Code to describe and show a strategy for imputing missing data.  
 
@@ -95,7 +95,7 @@ Let us first calculate and report the total number of missing values in the data
 missing.data <- sum(is.na(data$steps))
 ```
 
-The number of missing values in the dataset is `r missing.data`.  
+The number of missing values in the dataset is 2,304.  
 
 A strategy that is chosen for imputing a missing value is to use the mean value for that 5-minute interval in the dataset.  
 
@@ -130,14 +130,14 @@ Mean and median number of steps taken each day, after the missing values are imp
 mean.new.dailysum <- mean(new.dailysum, na.rm=TRUE)  
 ```
 
-After the missing values are imputed, the mean number of steps taken each day is `r mean.new.dailysum`.  
+After the missing values are imputed, the mean number of steps taken each day is 10,766.  
 
 
 ```{r echo = TRUE}
 median.new.dailysum <- median(new.dailysum, na.rm = TRUE)  
 ```
 
-After the missing values are imputed, the median number of steps taken each day is `r median.new.dailysum`.  
+After the missing values are imputed, the median number of steps taken each day is 10,766.  
 
 Both the mean and median values are higher after imputing missing data. The reason is that in the original data, there are some days with `steps` values `NA` for any `interval`. The total number of steps taken in such days are set to zeros by default, which explains the lower values for the mean and median in the original dataset.  
 
