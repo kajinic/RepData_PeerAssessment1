@@ -53,7 +53,7 @@ taken
 
     plot(g1)
 
-![](figure_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](figure/PA1_template_plot1.png)
 
     ggsave("PA1_template_plot1.png")
 
