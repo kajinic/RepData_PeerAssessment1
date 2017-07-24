@@ -19,9 +19,8 @@ It is stored in a comma-separated value (CSV) file.
 There are 17568 observations of 3 variables:
 
 steps : Number of steps taking in a 5-min interval ; missing values are
-noted as NA
-date : The date on which the measurement was taken in YYYY-MM-DD
-format  
+noted as NA date : The date on which the measurement was taken in
+YYYY-MM-DD format  
 interval : Identifier for the 5-minute interval in which measurement was
 taken
 
@@ -41,7 +40,6 @@ taken
                 main = "Distribution of daily total steps (missing data ignored)")
 
     plot(g1)  
-
 
 ### 3. Mean and median number of steps taken each day.
 
@@ -65,7 +63,6 @@ The median number of steps taken each day is 10,395.
           ylab("average steps per interval across all days")
 
     plot(g2)
-
 
 ### 5. The 5-minute interval that, on average, contains the maximum number of steps.
 
@@ -109,7 +106,6 @@ that interval.
 
     plot(g3)  
 
-
 Mean and median number of steps taken each day, after the missing values
 are imputed.
 
@@ -131,9 +127,9 @@ values for the mean and median in the original dataset.
 
 ### 8. Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends.
 
-Let us create a new factor variable called `wk` in the dataset with
-two levels: `weekday` and `weekend` indicating whether a given
-date is a weekday or weekend.
+Let us create a new factor variable called `wk` in the dataset with two
+levels: `weekday` and `weekend` indicating whether a given date is a
+weekday or weekend.
 
     is.weekday <- function(d) {
         wd <- weekdays(d)
@@ -145,9 +141,9 @@ date is a weekday or weekend.
     wx <- sapply(data.impute$date, is.weekday)
     data.impute$wk <- as.factor(wx)
 
-Now we are ready to create a panel plot showing a time series plot
-using the 5-minute intervals as the x-axis and the average number of 
-steps taken (averaged across all weekday days or weekend days) as the y-axis.
+Now we are ready to create a panel plot showing a time series plot using
+the 5-minute intervals as the x-axis and the average number of steps
+taken (averaged across all weekday days or weekend days) as the y-axis.
 
     wk.data <- aggregate(steps ~ wk+interval, data=data.impute, FUN=mean)
 
@@ -160,5 +156,3 @@ steps taken (averaged across all weekday days or weekend days) as the y-axis.
            type = "l",
            lty = 1,
            data = wk.data)
-
-
