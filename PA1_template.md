@@ -52,8 +52,8 @@ taken
                 main = "Distribution of daily total steps (missing data ignored)")
 
     plot(g1)
-
-a1_files/figure-markdown_strict/unnamed-chunk-2-1.png
+    
+plot(a1_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
     ggsave("PA1_template_plot1.png")
 
